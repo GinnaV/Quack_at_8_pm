@@ -5,7 +5,7 @@
   <title>Green Team App</title>
   <link rel="stylesheet" href="styles.css">
 
-  <!-- Inline styles for the new environmental posts (move to styles.css if desired) -->
+  <!-- Inline styles for environmental posts and modal (move to styles.css if desired) -->
   <style>
     /* Container for the environmental posts */
     .environmental-container {
@@ -14,17 +14,17 @@
       justify-content: center;
       gap: 15px;
       padding: 20px 0;
-      overflow-x: auto; /* Enables horizontal scrolling if needed */
+      overflow-x: auto;
     }
 
     /* Each environmental post card */
     .environmental-post {
       position: relative;
-      width: 220px;               /* Card width (adjust as needed) */
-      flex: 0 0 auto;             /* Prevents shrinking, so cards line up horizontally */
-      border-radius: 12px;        /* Rounded corners */
-      overflow: hidden;           /* Ensures images or overlay don't spill out */
-      border: 1px solid #ddd;     /* Light border */
+      width: 220px;
+      flex: 0 0 auto;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid #ddd;
       cursor: pointer;
       transition: transform 0.3s ease;
       background-color: #fff;
@@ -35,7 +35,6 @@
       transform: scale(1.05);
     }
 
-    /* The image inside the card */
     .environmental-post img {
       width: 100%;
       height: auto;
@@ -49,24 +48,20 @@
       width: 100%;
       color: #fff;
       padding: 10px;
-      /* Simple gradient fade from bottom to top */
       background: linear-gradient(to top, rgba(0,0,0,0.7), rgba(0,0,0,0));
     }
 
-    /* Overlay heading */
     .overlay h3 {
       margin: 0 0 5px;
       font-size: 16px;
     }
 
-    /* Overlay paragraph */
     .overlay p {
       margin: 0;
       font-size: 14px;
     }
 
-    /* --- Existing slider styles below (shortened for clarity) --- */
-
+    /* Existing slider styles (shortened for clarity) */
     .slider {
       width: 800px;
       height: 400px;
@@ -99,6 +94,56 @@
     @keyframes scroll {
       0% { transform: translateX(0); }
       100% { transform: translateX(-3200px); }
+    }
+
+    /* MODAL STYLES */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 9999;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0, 0, 0, 0.5);
+    }
+    .modal-content {
+      background-color: #fff;
+      margin: 10% auto;
+      padding: 20px;
+      border: 1px solid #888;
+      width: 80%;
+      max-width: 600px;
+      border-radius: 8px;
+      position: relative;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+    .close {
+      color: #aaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .close:hover {
+      color: #000;
+    }
+    #modalImage {
+      width: 100%;
+      height: auto;
+      margin-bottom: 15px;
+      border-radius: 4px;
+      object-fit: cover;
+      display: block;
+    }
+    #modalDesc {
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+    #modalArticle {
+      line-height: 1.5;
+      text-align: justify;
     }
   </style>
 </head>
@@ -136,67 +181,118 @@
       </div>
     </div>
 
-    <!-- NEW: Environmental posts in a style similar to the reference picture -->
+    <!-- Environmental posts section -->
     <h2>Latest Environmental Posts</h2>
     <div class="environmental-container">
-      <!-- Post 1 -->
-      <div class="environmental-post">
-        <img src="Photos/Post_1.png" alt="Green City 1">
+      <!-- Post 1: Urban Tree Initiative -->
+      <div class="environmental-post"
+           onclick="openModal(
+             'Urban Tree Initiative',
+             'Photos/Post_1.png',
+             'Planting 1,000 trees in downtown areas.',
+             'The Urban Tree Initiative is a comprehensive program designed to expand the green canopy of our city by planting 1,000 trees in strategic downtown locations. Urban areas face challenges such as air pollution, heat island effects, and limited green spaces. This initiative not only aims to improve the air quality by absorbing pollutants and carbon dioxide, but also provides much-needed shade during the hot summer months and creates a welcoming environment for local wildlife. Volunteers from the community are encouraged to join weekend planting events, where they receive training on proper tree planting techniques and care. Urban forestry experts lead these events, offering guidance on selecting the right tree species for various urban microclimates. Over time, these trees will contribute to a healthier urban ecosystem by reducing ambient temperatures, improving water absorption, and fostering biodiversity. In addition to the environmental benefits, the initiative is expected to enhance the aesthetic appeal of our downtown areas, making them more livable and vibrant. The program includes a long-term maintenance plan, ensuring that each tree is cared for as it grows. Community engagement is at the heart of this project, as local residents are given the opportunity to make a tangible impact on their surroundings. By participating, citizens gain valuable insights into sustainable urban development and contribute to a greener, more resilient city. Join us in transforming our urban landscape and enjoy the myriad benefits that come from a flourishing urban forest. Your involvement is key to creating a sustainable future for our community.'
+           )">
+        <img src="Photos/Post_1.png" alt="Urban Tree Initiative">
         <div class="overlay">
           <h3>Urban Tree Initiative</h3>
           <p>Planting 1,000 trees in downtown areas.</p>
         </div>
       </div>
 
-      <!-- Post 2 -->
-      <div class="environmental-post">
-        <img src="Photos/Post_2.png" alt="Green City 2">
+      <!-- Post 2: River Cleanup -->
+      <div class="environmental-post"
+           onclick="openModal(
+             'River Cleanup',
+             'Photos/Post_2.png',
+             'Join us in cleaning the local riverbanks.',
+             'The River Cleanup campaign is an environmental initiative dedicated to restoring the natural beauty and ecological balance of our local waterways. Over the years, our rivers have become polluted with plastic, industrial waste, and other debris, which not only detracts from their beauty but also poses significant risks to aquatic life and human health. This initiative brings together community volunteers, environmental experts, and local authorities to conduct regular cleanup drives along the riverbanks. Participants are provided with safety gear and tools to efficiently remove litter and contaminants. In addition to the physical cleanup, the program includes educational workshops aimed at raising public awareness about the importance of protecting water resources. These workshops cover topics such as waste management, recycling, and the impact of pollution on ecosystems. By cleaning our rivers, we create safer habitats for fish, birds, and other wildlife, while also ensuring that local communities have access to cleaner water. The campaign emphasizes long-term environmental stewardship by promoting practices that prevent future pollution. Through partnerships with local businesses and governmental agencies, the initiative is working to implement sustainable waste disposal systems and stricter environmental regulations. This comprehensive approach not only improves the immediate health of our rivers but also contributes to the overall well-being of our community. Join us in this vital effort to reclaim our waterways and build a cleaner, healthier future for all.'
+           )">
+        <img src="Photos/Post_2.png" alt="River Cleanup">
         <div class="overlay">
           <h3>River Cleanup</h3>
           <p>Join us in cleaning the local riverbanks.</p>
         </div>
       </div>
 
-      <!-- Post 3 -->
-      <div class="environmental-post">
-        <img src="Photos/Post_1.png" alt="Green City 3">
+      <!-- Post 3: Rooftop Gardens -->
+      <div class="environmental-post"
+           onclick="openModal(
+             'Rooftop Gardens',
+             'Photos/Post_1.png',
+             'Encouraging sustainable gardens on city rooftops.',
+             'The Rooftop Gardens initiative is a visionary project aimed at transforming unused rooftop spaces into thriving green oases in the heart of the city. In many urban environments, rooftops are overlooked spaces that, with a little creativity, can be turned into productive gardens. These rooftop gardens offer multiple benefits: they reduce the urban heat island effect by providing natural cooling, improve air quality through increased vegetation, and even offer local residents access to fresh produce. This initiative educates and empowers community members to convert their rooftops into gardens by providing expert advice on container gardening, soil management, and sustainable practices. Workshops are organized to demonstrate techniques for efficient water usage and organic cultivation methods that eliminate the need for harmful pesticides. The project not only enhances the aesthetic appeal of urban spaces but also fosters community spirit as neighbors collaborate on shared gardening projects. By transforming these barren rooftops, we create micro-ecosystems that support biodiversity, provide habitats for birds and insects, and contribute to a greener city. The long-term vision includes the development of a network of rooftop gardens across the city, offering a scalable model for urban agriculture and sustainable living. Join us in this transformative journey as we redefine urban spaces, promote environmental stewardship, and cultivate a healthier, more sustainable future for our communities.'
+           )">
+        <img src="Photos/Post_1.png" alt="Rooftop Gardens">
         <div class="overlay">
           <h3>Rooftop Gardens</h3>
           <p>Encouraging sustainable gardens on city rooftops.</p>
         </div>
       </div>
 
-      <!-- Post 4 -->
-      <div class="environmental-post">
-        <img src="Photos/post_3.png" alt="Green City 4">
+      <!-- Post 4: Bee-Friendly Spaces -->
+      <div class="environmental-post"
+           onclick="openModal(
+             'Bee-Friendly Spaces',
+             'Photos/post_3.png',
+             'Help pollinators thrive in urban environments.',
+             'The Bee-Friendly Spaces campaign is dedicated to creating and preserving habitats that support pollinators such as bees, butterflies, and other insects vital for a healthy ecosystem. Rapid urbanization and intensive pesticide use have significantly reduced pollinator populations, which are essential for the pollination of many plants, including those in our food supply. This initiative focuses on educating the public about the importance of pollinators and how to create environments in urban settings that are conducive to their survival. Through community gardens, urban landscaping projects, and the installation of bee hotels, the campaign encourages the planting of native wildflowers and the adoption of organic gardening practices. Detailed workshops provide information on selecting pollinator-friendly plants, designing bee sanctuaries, and reducing chemical usage. By taking small steps, such as planting a few flowers on a balcony or converting a section of a park into a wildflower meadow, residents can make a big impact. The long-term goal of the campaign is to integrate bee-friendly practices into urban planning and to raise awareness among policymakers about the critical role of pollinators in our ecosystem. Join us in creating a city that not only supports sustainable living but also ensures that our pollinators have the safe, nurturing environments they need to thrive. Your participation is essential in our mission to restore biodiversity and secure a greener future for generations to come.'
+           )">
+        <img src="Photos/post_3.png" alt="Bee-Friendly Spaces">
         <div class="overlay">
           <h3>Bee-Friendly Spaces</h3>
           <p>Help pollinators thrive in urban environments.</p>
         </div>
       </div>
     </div>
-    <!-- End of new environmental posts section -->
+    <!-- End of environmental posts section -->
 
     <!-- Existing PC-wide infinite slider -->
-    <h2>Infinite Scrolling Slider</h2>
+    <h2>Image Gallery</h2>
     <div class="slider">
       <div class="slide-track">
-        <!-- First set of slides -->
-        <div class="slide"><img src="Photos\Scroll_1.png" alt="Slide 1"></div>
-        <div class="slide"><img src="Photos\Scroll_2.png" alt="Slide 2"></div>
-        <div class="slide"><img src="Photos\Scroll_4.png" alt="Slide 3"></div>
-        <div class="slide"><img src="Photos\Scroll_3.png" alt="Slide 4"></div>
-
-        <!-- Duplicate slides for seamless loop -->
-        <div class="slide"><img src="Photos\Scroll_1.png" alt="Slide 1"></div>
-        <div class="slide"><img src="Photos\Scroll_2.png" alt="Slide 2"></div>
-        <div class="slide"><img src="Photos\Scroll_4.png" alt="Slide 3"></div>
-        <div class="slide"><img src="Photos\Scroll_3.png" alt="Slide 4"></div>
+        <div class="slide"><img src="Photos/Scroll_1.png" alt="Slide 1"></div>
+        <div class="slide"><img src="Photos/Scroll_2.png" alt="Slide 2"></div>
+        <div class="slide"><img src="Photos/Scroll_4.png" alt="Slide 3"></div>
+        <div class="slide"><img src="Photos/Scroll_3.png" alt="Slide 4"></div>
+        <div class="slide"><img src="Photos/Scroll_1.png" alt="Slide 1"></div>
+        <div class="slide"><img src="Photos/Scroll_2.png" alt="Slide 2"></div>
+        <div class="slide"><img src="Photos/Scroll_4.png" alt="Slide 3"></div>
+        <div class="slide"><img src="Photos/Scroll_3.png" alt="Slide 4"></div>
       </div>
     </div>
+    <br><br><br><br><br><br>
 
   </main>
 
-  <script src="script.js"></script>
+  <!-- MODAL POPUP (Hidden by default) -->
+  <div id="infoModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <h2 id="modalTitle">Title Here</h2>
+      <img id="modalImage" src="" alt="Modal Image" />
+      <p id="modalDesc"></p>
+      <p id="modalArticle"></p>
+    </div>
+  </div>
+  <!-- END MODAL POPUP -->
+
+  <script>
+    function openModal(title, imageSrc, shortDesc, articleText) {
+      document.getElementById('modalTitle').innerText = title;
+      document.getElementById('modalImage').src = imageSrc;
+      document.getElementById('modalDesc').innerText = shortDesc;
+      document.getElementById('modalArticle').innerText = articleText;
+      document.getElementById('infoModal').style.display = 'block';
+    }
+    function closeModal() {
+      document.getElementById('infoModal').style.display = 'none';
+    }
+    window.onclick = function(event) {
+      const modal = document.getElementById('infoModal');
+      if (event.target === modal) {
+        closeModal();
+      }
+    }
+  </script>
 </body>
 </html>
