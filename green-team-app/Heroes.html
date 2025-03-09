@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heroes of the Month</title>
+    <link rel="stylesheet" href="styles.css"> 
+</head>
+<img src=Photos\lgoo.jpg alt="Logo" class="logo">
+
+<body>
+    <header>
+        <h1>The Green Team</h1>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="feedback.html">Feedback</a></li>
+            <li><a href="feed.html">Feed</a></li>
+            <li><a href="heroes.html">Heroes</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <h2>Heroes of the Month</h2>
+        <p>Celebrating  the top 3 young heroes who made the biggest impact this month!</p>
+
+        <section class="heroes-container">
+            <div class="hero">
+                <img src=  Photos\anon2.jpg alt="Hero 1"> <!-- Replace with actual image paths -->
+                <h3>Maram Isamil</h3>
+                <p>Planted 100 trees & led a community cleanup!</p>
+            </div>
+
+            <div class="hero">
+                <img src=Photos\anon.jpg alt="Hero 2">
+                <h3>Sruthi Madika</h3>
+                <p>Volunteered 30 hours at our local garden project!</p>
+            </div>
+
+            <div class="hero">
+                <img src=Photos\anon.jpg alt="Hero 3">
+                <h3>Vaishnavi Ginna</h3>
+                <p>Attended every event arranged by the charity this month!</p>
+            </div>
+        </section>
+        <br></br>
+        <p class="hero-message">
+            Want to be a hero? Join our monthly events and make a difference!
+            Your picture could be featured here next month!
+          </p>
+    </main>
+    <style>
+        .heroes-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 30px;
+        }
+        .hero {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            max-width: 300px;
+        }
+        .hero img {
+            width: 100%;
+            border-radius: 8px;
+        }
+        .hero h3 {
+            color: #388e3c;
+            margin-top: 10px;
+        }
+        .hero p {
+            font-size: 1em;
+            color: #333;
+        }
+        @media (max-width: 768px) {
+            .heroes-container {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</body>
+</html>
+
