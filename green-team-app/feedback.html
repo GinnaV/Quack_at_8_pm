@@ -10,23 +10,31 @@
     <div class="container">
         <h1>Community Feedback Form</h1>
         <form id="feedback-form">
-            <label for="service-interest">Which services are you most interested in?</label>
-            <select id="service-interest" required>
-                <option value="">Select a service</option>
-                <option value="service1">Service 1</option>
-                <option value="service2">Service 2</option>
-                <option value="service3">Service 3</option>
+            <label for="programme-interest">Which programmes are you most interested in?</label>
+            <br>
+            <select id="programme-interest" required>
+                <option value="">Select programmes</option>
+                <option value="greenVolunteers">Green Volunteers</option>
+                <option value="skylarks">Skylarks</option>
+                <option value="Green Explorers">Green Explorers</option>
+                <option value="Thrive">Thrive</option>
+                <option value="Green Shoots">Green Shoots</option>
+                <option value="Green Schools">Green Schools</option>
+                <option value="Nature Play">Nature Play</option>
+                <option value="Holiday Activity">Holiday Activity</option>
+                <option value="Corporates/Groups">Corporates/Groups</option>
             </select>
-
+            <br>
             <label for="willingness-to-pay">How much would you be willing to pay for this service?</label>
             <input type="number" id="willingness-to-pay" required placeholder="Amount in USD">
-
+            <br>
             <label for="age">Your Age:</label>
+            <br>
             <input type="number" id="age" required placeholder="Your age">
-
+            <br>
             <label for="location">Your Location (Country/City):</label>
             <input type="text" id="location" required placeholder="Where are you located?">
-
+            <br>
             <button type="submit">Submit Feedback</button>
         </form>
 
