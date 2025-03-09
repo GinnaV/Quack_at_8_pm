@@ -14,7 +14,7 @@ document.getElementById('feedback-form').addEventListener('submit', function(eve
     const timestamp = new Date().toLocaleString();
     const csvLine = `"${timestamp}","${age}","${programmeInterest}","${willingnessToPay}"\n`;
 
-    // Store the data secretly in localStorage
+    // Store the data in localStorage
     saveToLocalStorage(csvLine);
 
     // Hide the form
@@ -22,11 +22,11 @@ document.getElementById('feedback-form').addEventListener('submit', function(eve
 
     // Show the thank-you message
     const thankYouMessage = document.getElementById('thank-you-message');
-    thankYouMessage.style.display = 'block'; // Show the thank you message directly (instead of using class)
+    thankYouMessage.style.display = 'block'; 
     
-    // Redirect to home page after a delay (3 seconds)
+    // Redirect to home page after a delay (1 second)
     setTimeout(function() {
-        window.location.href = '/'; // Adjust the path if necessary
+        window.location.href = '/'; 
     }, 1000); 
 });
 
@@ -42,7 +42,7 @@ slider.addEventListener("input", function() {
     }
 });
 
-// Function to secretly save data without downloading
+// Function to save data WITHOUT downloading
 function saveToLocalStorage(csvLine) {
     const csvHeader = "Timestamp,Age,Programme Interest,Willingness to Pay\n";
     let existingCSV = localStorage.getItem('feedbackCSV') || csvHeader;
@@ -50,21 +50,14 @@ function saveToLocalStorage(csvLine) {
     localStorage.setItem('feedbackCSV', existingCSV);
 }
 
-// ✅ SUPER SECRET TRIGGER TO DOWNLOAD THE FILE
+// Trigger to download the file
 document.addEventListener('keydown', function(event) {
     if (event.shiftKey && event.key === 'D') {
         downloadCSV();
     }
 });
 
-// ✅ If you also want a hidden button instead of Shift+D (Optional)
-const hiddenButton = document.createElement('button');
-hiddenButton.textContent = "Download Feedback Data";
-hiddenButton.style.display = 'none';
-hiddenButton.onclick = downloadCSV;
-document.body.appendChild(hiddenButton);
-
-// ✅ Function to download the CSV file
+// Function to download the CSV file
 function downloadCSV() {
     const csvFileName = "feedback-data.csv";
     const existingCSV = localStorage.getItem('feedbackCSV');
@@ -84,6 +77,4 @@ function downloadCSV() {
     a.click();
     URL.revokeObjectURL(url);
 
-    // Optional: Clear the data after downloading if you want
-    // localStorage.removeItem('feedbackCSV');
 }

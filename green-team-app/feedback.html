@@ -16,28 +16,19 @@
             <li><a href="index.html">Home</a></li>
             <li><a href="feedback.html">Feedback</a></li>
             <li><a href="feed.html">Feed</a></li>
-            <li><a href="heroes.html">Heroes</a></li>
         </ul>
     </nav>
 
-    <!-- 
-      1) Use the same .container to hold both the new bar and the form.
-      2) Override or remove the original margin-left from .container 
-         so it’s centered (instead of left-shifted).
-    -->
     <div class="container" style="max-width: 600px; margin: 80px auto;">
 
-        <!-- NEW BAR: Program Feedback Dropdown (moved INSIDE .container) -->
         <div class="composer" 
-             style="margin-bottom: 20px; /* remove large top margins to align with form */">
+             style="margin-bottom: 20px">
           <div class="composer-top" style="display: flex; align-items: center;">
-            <!-- Left-side image -->
             <img 
               src="Photos/Profile_Picture.png" 
               alt="Programme Icon" 
               style="width: 40px; height: 40px; border-radius: 50%; margin-right: 10px;"
             >
-            <!-- Dropdown of all programme names -->
             <select 
               name="programmeDropdown" 
               id="programmeDropdown" 
@@ -66,7 +57,6 @@
             </div>
           </div>
         </div>
-        <!-- END OF NEW BAR -->
 
         <h1>Community Feedback Form</h1>
         <form id="feedback-form">
@@ -107,19 +97,22 @@
               How much would you be willing to pay for this service?
             </label>
             <div class="slider-container">
-                <span>0</span>
-                <input 
-                  type="range" 
-                  id="willingness-to-pay-slider" 
-                  name="willingness-to-pay" 
-                  min="0" 
-                  max="100" 
-                  value="20">
-                <span>100+</span>
-
-                <class="slider-value">
-                <p>Willing to pay: <span id="slider-value">$20</span></p>
+                <div class="slider-values">
+                    <span>0</span>
+                    <input 
+                      type="range" 
+                      id="willingness-to-pay-slider" 
+                      name="willingness-to-pay" 
+                      min="0" 
+                      max="100" 
+                      value="20">
+                    <span>100+</span>
+                </div>
+                <div class="slider-value-display">
+                    <p>Willing to pay: <span id="slider-value">$20</span></p>
+                </div>
             </div>
+            
             <br><br>
 
             <label for="age-range">Age Range</label>
