@@ -1,47 +1,59 @@
-// Load activities from local storage
-document.addEventListener("DOMContentLoaded", function () {
-    loadActivities();
-    loadJournal();
+document.getElementById('feedback-form').addEventListener('submit', function(event) {
+    event.preventDefault(); // Prevent the default form submission
+
+    // Collect feedback data from the form
+    const feedbackData = {
+        interest: document.getElementById('service-interest').value,
+        willingnessToPay: document.getElementById('willingness-to-pay').value,
+        age: document.getElementById('age').value,
+        location: document.getElementById('location').value
+    };
+
+    // Get existing feedback data from localStorage or initialize an empty array
+    let feedbackList = JSON.parse(localStorage.getItem('feedbackData')) || [];
+
+    // Add the new feedback to the existing list
+    feedbackList.push(feedbackData);
+
+    // Save the updated feedback data back to localStorage
+    localStorage.setItem('feedbackData', JSON.stringify(feedbackList));
+
+    // Log feedback data for verification
+    console.log('Collected Feedback:', feedbackData);
+
+    // Show the thank-you message
+    document.getElementById('thank-you-message').style.display = 'block';
+
+    // Optionally, reset the form for the user to submit more feedback
+    document.getElementById('feedback-form').reset();
+
+    // Update and display curated insights (you can call a function here to update insights)
+    updateInsights(feedbackList);
 });
 
-// Add new activity
-function addActivity() {
-    let activityInput = document.getElementById("activityInput").value;
-    if (activityInput === "") return;
+// Function to display curated insights
+function updateInsights(feedbackList) {
+    // Example insights: number of responses, average willingness to pay, etc.
+    let totalFeedback = feedbackList.length;
+    let totalWillingnessToPay = feedbackList.reduce((sum, feedback) => sum + parseFloat(feedback.willingnessToPay), 0);
+    let averageWillingnessToPay = totalWillingnessToPay / totalFeedback;
 
-    let activities = JSON.parse(localStorage.getItem("activities")) || [];
-    activities.push(activityInput);
-    localStorage.setItem("activities", JSON.stringify(activities));
-
-    loadActivities();
+    // Update the report section on the page
+    document.getElementById('insight-report').innerHTML = `
+        <h2>Feedback Insights</h2>
+        <p>Total Responses: ${totalFeedback}</p>
+        <p>Average Willingness to Pay: $${averageWillingnessToPay.toFixed(2)}</p>
+        <p>Most Popular Service: ${getMostPopularService(feedbackList)}</p>
+    `;
 }
 
-// Load and display activities
-function loadActivities() {
-    let activities = JSON.parse(localStorage.getItem("activities")) || [];
-    let activityList = document.getElementById("activityList");
-    if (activityList) {
-        activityList.innerHTML = activities.map(act => `<li>${act}</li>`).join("");
-    }
-}
+// Function to get the most popular service (based on how many times each service is selected)
+function getMostPopularService(feedbackList) {
+    const serviceCounts = feedbackList.reduce((counts, feedback) => {
+        counts[feedback.interest] = (counts[feedback.interest] || 0) + 1;
+        return counts;
+    }, {});
 
-// Save journal entry
-function saveJournal() {
-    let entry = document.getElementById("journalEntry").value;
-    if (entry === "") return;
-
-    let journal = JSON.parse(localStorage.getItem("journal")) || [];
-    journal.push(entry);
-    localStorage.setItem("journal", JSON.stringify(journal));
-
-    loadJournal();
-}
-
-// Load and display journal entries
-function loadJournal() {
-    let journal = JSON.parse(localStorage.getItem("journal")) || [];
-    let journalList = document.getElementById("journalList");
-    if (journalList) {
-        journalList.innerHTML = journal.map(entry => `<li>${entry}</li>`).join("");
-    }
+    const mostPopular = Object.entries(serviceCounts).reduce((max, [service, count]) => count > max.count ? { service, count } : max, { service: '', count: 0 });
+    return mostPopular.service || 'No data yet';
 }
