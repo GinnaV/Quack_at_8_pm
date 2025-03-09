@@ -1,70 +1,29 @@
 document.getElementById('feedback-form').addEventListener('submit', function(event) {
-    event.preventDefault(); // Prevent the default form submission
+    event.preventDefault();
 
-    // Collect feedback data from the form
-    const feedbackData = {
-        interest: document.getElementById('service-interest').value,
-        willingnessToPay: document.getElementById('willingness-to-pay').value,
-        age: document.getElementById('age').value,
-        location: document.getElementById('location').value
-    };
+    const age = document.getElementById('age-range').value;
+    const checkboxes = document.querySelectorAll('input[name="programme-interest"]:checked');
+    const programmeInterest = Array.from(checkboxes)
+        .map(checkbox => checkbox.nextElementSibling.innerText)
+        .join(', ');
 
-    // Get existing feedback data from localStorage or initialize an empty array
-    let feedbackList = JSON.parse(localStorage.getItem('feedbackData')) || [];
+    const willingnessToPay = slider.value == 100 ? '$100+' : `$${slider.value}`;
 
-    // Add the new feedback to the existing list
-    feedbackList.push(feedbackData);
+    const timestamp = new Date().toLocaleString();
+    const csvLine = `"${timestamp}","${age}","${programmeInterest}","${willingnessToPay}"\n`;
 
-    // Save the updated feedback data back to localStorage
-    localStorage.setItem('feedbackData', JSON.stringify(feedbackList));
+    downloadCSV(csvLine);
 
-    // Log feedback data for verification
-    console.log('Collected Feedback:', feedbackData);
-
-    // Show the thank-you message
-    document.getElementById('thank-you-message').style.display = 'block';
-
-    // Optionally, reset the form for the user to submit more feedback
     document.getElementById('feedback-form').reset();
+    slider.value = 20;
+    sliderValue.textContent = `$20`;
 
-    // Update and display curated insights (you can call a function here to update insights)
-    updateInsights(feedbackList);
+    document.getElementById('thank-you-message').style.display = 'block';
 });
-
-// Function to display curated insights
-function updateInsights(feedbackList) {
-    // Example insights: number of responses, average willingness to pay, etc.
-    let totalFeedback = feedbackList.length;
-    let totalWillingnessToPay = feedbackList.reduce((sum, feedback) => sum + parseFloat(feedback.willingnessToPay), 0);
-    let averageWillingnessToPay = totalWillingnessToPay / totalFeedback;
-
-    // Update the report section on the page
-    document.getElementById('insight-report').innerHTML = `
-        <h2>Feedback Insights</h2>
-        <p>Total Responses: ${totalFeedback}</p>
-        <p>Average Willingness to Pay: $${averageWillingnessToPay.toFixed(2)}</p>
-        <p>Most Popular Service: ${getMostPopularService(feedbackList)}</p>
-    `;
-}
-
-// Function to get the most popular service (based on how many times each service is selected)
-function getMostPopularService(feedbackList) {
-    const serviceCounts = feedbackList.reduce((counts, feedback) => {
-        counts[feedback.interest] = (counts[feedback.interest] || 0) + 1;
-        return counts;
-    }, {});
-
-    const mostPopular = Object.entries(serviceCounts).reduce((max, [service, count]) => count > max.count ? { service, count } : max, { service: '', count: 0 });
-    return mostPopular.service || 'No data yet';
-}
 
 const slider = document.getElementById("willingness-to-pay-slider");
 const sliderValue = document.getElementById("slider-value");
 
-// Set default value on page load
-sliderValue.textContent = `$${slider.value}`;
-
-// Handle slider changes
 slider.addEventListener("input", function() {
     if (slider.value == 100) {
         sliderValue.textContent = `$100+`;
@@ -73,3 +32,22 @@ slider.addEventListener("input", function() {
     }
 });
 
+function downloadCSV(csvLine) {
+    const csvHeader = "Timestamp,Age,Programme Interest,Willingness to Pay\n";
+    const csvFileName = "feedback-data.csv";
+
+    // Check if there's already CSV data in localStorage
+    let existingCSV = localStorage.getItem('feedbackCSV') || csvHeader;
+    existingCSV += csvLine;
+    localStorage.setItem('feedbackCSV', existingCSV);
+
+    // Create a downloadable CSV file
+    const blob = new Blob([existingCSV], { type: 'text/csv' });
+    const url = URL.createObjectURL(blob);
+
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = csvFileName;
+    a.click();
+    URL.revokeObjectURL(url);
+}
