@@ -289,6 +289,7 @@ button:hover {
 .post-footer div:hover {
     color: #388e3c;
 }
+<<<<<<< HEAD
 
 /* SLIDER STYLES (Desktop Version) */
 .slider {
@@ -327,6 +328,25 @@ button:hover {
 }
 
 /* Media Query for Smaller Screens */
+=======
+/* Styling for the thank you message */
+#thank-you-message {
+    display: none; /* Ensure it starts hidden */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #4CAF50; /* Green background */
+    color: white; /* White text */
+    padding: 20px;
+    font-size: 18px;
+    text-align: center;
+}
+
+
+
+/* Media query for smaller screens */
+>>>>>>> 717152db13679f8784bf73bb02e305145302970b
 @media (max-width: 600px) {
     .container {
         width: 95%;
