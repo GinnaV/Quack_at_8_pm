@@ -17,16 +17,29 @@ document.getElementById('feedback-form').addEventListener('submit', function(eve
     // Store the data secretly in localStorage
     saveToLocalStorage(csvLine);
 
-    // Reset the form without downloading anything
-    document.getElementById('feedback-form').reset();
-    slider.value = 20;
-    sliderValue.textContent = `$20`;
+    // Hide the form
+    document.getElementById('feedback-form').style.display = 'none';
 
-    // Show the thank-you message
-    document.getElementById('thank-you-message').style.display = 'block';
+    // Show the thank-you message and make it obvious
+    const thankYouMessage = document.getElementById('thank-you-message');
+    thankYouMessage.style.display = 'block';  // Make it visible
+    thankYouMessage.style.position = 'absolute';  // Position it over the form
+    thankYouMessage.style.top = '50%';  // Center it vertically
+    thankYouMessage.style.left = '50%';  // Center it horizontally
+    thankYouMessage.style.transform = 'translate(-50%, -50%)';  // Adjust for perfect centering
+    thankYouMessage.style.backgroundColor = '#4CAF50';  // Green background for visibility
+    thankYouMessage.style.color = 'white';  // White text color
+    thankYouMessage.style.padding = '20px';  // Padding to make the message look nicer
+    thankYouMessage.style.fontSize = '18px';  // Larger font size for clarity
+    thankYouMessage.style.textAlign = 'center';  // Centered text
+
+    // Redirect to home page after a delay (3 seconds)
+    setTimeout(function() {
+        window.location.href = '/'; // Adjust the path if necessary
+    }, 1000); 
 });
 
-// ✅ Handle the slider value change
+// Handle the slider value change
 const slider = document.getElementById("willingness-to-pay-slider");
 const sliderValue = document.getElementById("slider-value");
 
@@ -38,7 +51,7 @@ slider.addEventListener("input", function() {
     }
 });
 
-// ✅ Function to secretly save data without downloading
+// Function to secretly save data without downloading
 function saveToLocalStorage(csvLine) {
     const csvHeader = "Timestamp,Age,Programme Interest,Willingness to Pay\n";
     let existingCSV = localStorage.getItem('feedbackCSV') || csvHeader;
