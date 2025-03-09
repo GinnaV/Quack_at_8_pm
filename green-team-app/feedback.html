@@ -10,19 +10,37 @@
     <div class="container">
         <h1>Community Feedback Form</h1>
         <form id="feedback-form">
-            <!-- Programme Interest (Multiple Choices) -->
-            <label for="programme-interest">Which programmes are you most interested in? (Select all that apply)</label>
-            <div>
-                <input type="checkbox" id="greenVolunteers" name="programme-interest" value="greenVolunteers">
-                <label for="greenVolunteers">Green Volunteers</label>
-            </div>
-            <div>
-                <input type="checkbox" id="skylarks" name="programme-interest" value="skylarks">
-                <label for="skylarks">Skylarks</label>
-            </div>
-            <br><br>
+             <label for="programme-interest">Which programmes are you most interested in? (Select all that apply)</label>
+             <div>
+                 <input type="checkbox" id="greenVolunteers" name="programme-interest" value="greenVolunteers">
+                 <label for="greenVolunteers">Green Volunteers</label>
 
-            <!-- Willingness to Pay (Smart Slider with 0 - 100+) -->
+                 <input type="checkbox" id="skylarks" name="programme-interest" value="skylarks">
+                 <label for="skylarks">Skylarks</label>
+             
+                 <input type="checkbox" id="greenExplorers" name="programme-interest" value="greenExplorers">
+                 <label for="greenExplorers">Green Explorers</label>
+             
+                 <input type="checkbox" id="thrive" name="programme-interest" value="thrive">
+                 <label for="thrive">Thrive</label>
+             
+                 <input type="checkbox" id="greenShoots" name="programme-interest" value="greenShoots">
+                 <label for="greenShoots">Green Shoots</label>
+             
+                 <input type="checkbox" id="greenSchools" name="programme-interest" value="greenSchools">
+                 <label for="greenSchools">Green Schools</label>
+             
+                 <input type="checkbox" id="naturePlay" name="programme-interest" value="naturePlay">
+                 <label for="naturePlay">Nature Play</label>
+             
+                 <input type="checkbox" id="holidayActivity" name="programme-interest" value="holidayActivity">
+                 <label for="holidayActivity">Holiday Activity</label>
+             
+                 <input type="checkbox" id="corporatesGroups" name="programme-interest" value="corporatesGroups">
+                 <label for="corporatesGroups">Corporates/Groups</label>
+             </div>
+             <br><br>
+
             <label for="willingness-to-pay-slider">How much would you be willing to pay for this service?</label>
             <div class="slider-container">
                 <span>0</span>
@@ -33,32 +51,26 @@
                     max="100" 
                     value="20">
                 <span>100+</span>
-            </div>
-            <div class="slider-value">
+
+                class="slider-value">
                 <p>Willing to pay: <span id="slider-value">$20</span></p>
             </div>
             <br><br>
 
-            <!-- Age Range (Dropdown) -->
             <label for="age-range">Age Range</label>
+            <div>
             <select id="age-range" name="age-range">
+                <option value="18">>18</option>
                 <option value="18-24">18-24</option>
                 <option value="25-34">25-34</option>
                 <option value="35-44">35-44</option>
                 <option value="45-54">45-54</option>
                 <option value="55+">55+</option>
             </select>
+            </div>
             <br><br>
-
-            <!-- Location -->
-            <label for="location">Your Location (Country/City):</label>
-            <input type="text" id="location" required placeholder="Where are you located?">
-            <br><br>
-
-            <button type="submit">Submit Feedback</button>
         </form>
 
-        <!-- Thank You Message -->
         <div id="thank-you-message" style="display: none;">
             <p>Thank you for your feedback!</p>
         </div>
