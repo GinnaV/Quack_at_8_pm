@@ -162,6 +162,22 @@ button:hover {
     width: 100%; /* Makes it responsive */
     max-width: 500px; /* Ensures it doesn’t get too wide */
 }
+/* Styling for the thank you message */
+#thank-you-message {
+    display: none; /* Ensure it starts hidden */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #4CAF50; /* Green background */
+    color: white; /* White text */
+    padding: 20px;
+    font-size: 18px;
+    text-align: center;
+}
+
+
+
 /* Media query for smaller screens */
 @media (max-width: 600px) {
     .container {

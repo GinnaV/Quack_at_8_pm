@@ -20,19 +20,10 @@ document.getElementById('feedback-form').addEventListener('submit', function(eve
     // Hide the form
     document.getElementById('feedback-form').style.display = 'none';
 
-    // Show the thank-you message and make it obvious
+    // Show the thank-you message
     const thankYouMessage = document.getElementById('thank-you-message');
-    thankYouMessage.style.display = 'block';  // Make it visible
-    thankYouMessage.style.position = 'absolute';  // Position it over the form
-    thankYouMessage.style.top = '50%';  // Center it vertically
-    thankYouMessage.style.left = '50%';  // Center it horizontally
-    thankYouMessage.style.transform = 'translate(-50%, -50%)';  // Adjust for perfect centering
-    thankYouMessage.style.backgroundColor = '#4CAF50';  // Green background for visibility
-    thankYouMessage.style.color = 'white';  // White text color
-    thankYouMessage.style.padding = '20px';  // Padding to make the message look nicer
-    thankYouMessage.style.fontSize = '18px';  // Larger font size for clarity
-    thankYouMessage.style.textAlign = 'center';  // Centered text
-
+    thankYouMessage.style.display = 'block'; // Show the thank you message directly (instead of using class)
+    
     // Redirect to home page after a delay (3 seconds)
     setTimeout(function() {
         window.location.href = '/'; // Adjust the path if necessary
