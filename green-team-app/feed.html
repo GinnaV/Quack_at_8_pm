@@ -21,134 +21,166 @@
     </ul>
   </nav>
 
-  <div class="feed-container">
-
-    <!-- NEW: Feedback box floated right (added without altering existing code) -->
-   
-    <!-- Composer (Top) -->
-    <div class="composer">
-      <div class="composer-top">
-        <img src="Photos/Profile_Picture.png" alt="Profile">
-        <input type="text" placeholder="Start a post">
-      </div>
-      <div class="composer-bottom">
-        <div class="composer-option">
-          <img src="Photos/Camara_Icon.png" alt="Video icon">
-          <span>Video</span>
-        </div>
-        <div class="composer-option">
-          <img src="Photos/Photo_icon.png" alt="Photo icon">
-          <span>Photo</span>
-        </div>
-        <div class="composer-option">
-          <img src="Photos/Writing_icon.png" alt="Write icon">
-          <span>Write article</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- Post 1 -->
-    <div class="post">
-      <div class="post-header">
-        <span class="like-info">Amy Anderson and Aswin Podimon like this</span>
-        <div class="post-user">
-          <img src="Photos/Profile_Picture.png" alt="User">
-          <div class="user-details">
-            <strong>Nature Student Team Redwood</strong>
-            <span>1h • Edited</span>
-          </div>
-        </div>
-      </div>
-      <div class="post-content">
-        <p>
-          We’re excited to announce our reforestation project in Redwood Park!
-          Over the next few weeks, we’ll be planting more than 500 native trees
-          to restore the local ecosystem.
-        </p>
-        <img src="Photos/Post_1.png" alt="Redwood Park">
-      </div>
-      <div class="post-footer">
-        <div>Like</div>
-        <div>Comment</div>
-        <div>Share</div>
-      </div>
-    </div>
-    <div style="
-    float: right;
-    width: 220px;
-    margin: 10px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    background-color: #fff;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    padding: 10px;
+  <!-- FLEX WRAPPER: holds the left dashboard and the main feed side by side -->
+  <div style="
+    display: flex; 
+    justify-content: center; 
+    align-items: flex-start; 
+    margin-top: 100px;
   ">
-    <h3>Give Us Your Feedback</h3>
-    <p>How do you rate our posts?</p>
-    <p style="font-size: 1.2em; cursor: pointer;">
-      <span>⭐</span>
-      <span>⭐</span>
-      <span>⭐</span>
-      <span>⭐</span>
-      <span>⭐</span>
-    </p>
-  </div>
-  <!-- END of Feedback box -->
+    <!-- LEFT-HAND DASHBOARD -->
+    <div style="
+      width: 220px;
+      margin-right: 20px;  /* Space between dashboard & feed */
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      background-color: #fff;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      height: fit-content; /* Shrinks to fit content height */
+    ">
+      <h3 style="margin-bottom: 10px;">Dashboard</h3>
+      <ul style="list-style: none; padding: 0; margin: 0;">
+        <li style="margin: 8px 0; cursor: pointer;">Saved Posts</li>
+        <li style="margin: 8px 0; cursor: pointer;">Groups</li>
+        <li style="margin: 8px 0; cursor: pointer;">Settings</li>
+        <!-- Add more dashboard links as needed -->
+      </ul>
+    </div>
+    <!-- END LEFT-HAND DASHBOARD -->
 
-    <!-- Post 2 -->
-    <div class="post">
-      <div class="post-header">
-        <span class="like-info">3 people like this</span>
-        <div class="post-user">
-          <img src="Photos/Profile_Picture.png" alt="User">
-          <div class="user-details">
-            <strong>Green Team Lakeside</strong>
-            <span>6h</span>
+    <!-- FEED WRAPPER: Constrains the feed width & centers it -->
+    <div style="max-width: 600px; width: 100%;">
+      <div class="feed-container" style="margin: 0 auto;"> 
+        <!-- Composer (Top) -->
+        <div class="composer">
+          <div class="composer-top">
+            <img src="Photos/Profile_Picture.png" alt="Profile">
+            <input type="text" placeholder="Start a post">
+          </div>
+          <div class="composer-bottom">
+            <div class="composer-option">
+              <img src="Photos/Camara_Icon.png" alt="Video icon">
+              <span>Video</span>
+            </div>
+            <div class="composer-option">
+              <img src="Photos/Photo_icon.png" alt="Photo icon">
+              <span>Photo</span>
+            </div>
+            <div class="composer-option">
+              <img src="Photos/Writing_icon.png" alt="Write icon">
+              <span>Write article</span>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="post-content">
-        <p>
-          We had an amazing day cleaning up the lakeshore.
-          Thanks to our volunteers who collected over 10 bags of plastic and
-          other waste. Let’s keep our waters clean!
-        </p>
-        <img src="Photos/Post_2.png" alt="Lake Cleanup">
-      </div>
-      <div class="post-footer">
-        <div>Like</div>
-        <div>Comment</div>
-        <div>Share</div>
-      </div>
-    </div>
 
-    <!-- Post 3 -->
-    <div class="post">
-      <div class="post-header">
-        <span class="like-info">Nature Enthusiasts and 5 others like this</span>
-        <div class="post-user">
-          <img src="Photos/Profile_Picture.png" alt="User">
-          <div class="user-details">
-            <strong>Eco Warriors United</strong>
-            <span>1 day ago</span>
+        <!-- Post 1 -->
+        <div class="post">
+          <div class="post-header">
+            <span class="like-info">Amy Anderson and Aswin Podimon like this</span>
+            <div class="post-user">
+              <img src="Photos/Profile_Picture.png" alt="User">
+              <div class="user-details">
+                <strong>Nature Student Team Redwood</strong>
+                <span>1h • Edited</span>
+              </div>
+            </div>
+          </div>
+          <div class="post-content">
+            <p>
+              We’re excited to announce our reforestation project in Redwood Park!
+              Over the next few weeks, we’ll be planting more than 500 native trees
+              to restore the local ecosystem.
+            </p>
+            <img src="Photos/Post_1.png" alt="Redwood Park">
+          </div>
+          <div class="post-footer">
+            <div>Like</div>
+            <div>Comment</div>
+            <div>Share</div>
           </div>
         </div>
-      </div>
-      <div class="post-content">
-        <p>
-          Did you know that planting wildflowers in your garden can help save the
-          local bee population? Join us in our #BeeFriendly campaign and spread
-          the word!
-        </p>
-        <img src="Photos/post_3.png" alt="Wildflowers">
-      </div>
-      <div class="post-footer">
-        <div>Like</div>
-        <div>Comment</div>
-        <div>Share</div>
-      </div>
-    </div>
-  </div> <!-- End of .feed-container -->
+
+        <!-- Feedback box floated right (Unchanged) -->
+        <div style="
+          float: right;
+          width: 220px;
+          margin: 10px;
+          border: 1px solid #ccc;
+          border-radius: 8px;
+          background-color: #fff;
+          box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+          padding: 10px;
+        ">
+          <h3>Give Us Your Feedback</h3>
+          <p>How do you rate our posts?</p>
+          <p style="font-size: 1.2em; cursor: pointer;">
+            <span>⭐</span>
+            <span>⭐</span>
+            <span>⭐</span>
+            <span>⭐</span>
+            <span>⭐</span>
+          </p>
+        </div>
+        <!-- END of Feedback box -->
+
+        <!-- Post 2 -->
+        <div class="post">
+          <div class="post-header">
+            <span class="like-info">3 people like this</span>
+            <div class="post-user">
+              <img src="Photos/Profile_Picture.png" alt="User">
+              <div class="user-details">
+                <strong>Green Team Lakeside</strong>
+                <span>6h</span>
+              </div>
+            </div>
+          </div>
+          <div class="post-content">
+            <p>
+              We had an amazing day cleaning up the lakeshore.
+              Thanks to our volunteers who collected over 10 bags of plastic and
+              other waste. Let’s keep our waters clean!
+            </p>
+            <img src="Photos/Post_2.png" alt="Lake Cleanup">
+          </div>
+          <div class="post-footer">
+            <div>Like</div>
+            <div>Comment</div>
+            <div>Share</div>
+          </div>
+        </div>
+
+        <!-- Post 3 -->
+        <div class="post">
+          <div class="post-header">
+            <span class="like-info">Nature Enthusiasts and 5 others like this</span>
+            <div class="post-user">
+              <img src="Photos/Profile_Picture.png" alt="User">
+              <div class="user-details">
+                <strong>Eco Warriors United</strong>
+                <span>1 day ago</span>
+              </div>
+            </div>
+          </div>
+          <div class="post-content">
+            <p>
+              Did you know that planting wildflowers in your garden can help save the
+              local bee population? Join us in our #BeeFriendly campaign and spread
+              the word!
+            </p>
+            <img src="Photos/post_3.png" alt="Wildflowers">
+          </div>
+          <div class="post-footer">
+            <div>Like</div>
+            <div>Comment</div>
+            <div>Share</div>
+          </div>
+        </div>
+
+      </div> <!-- End of .feed-container -->
+    </div> <!-- End of FEED WRAPPER -->
+  </div> <!-- End of FLEX WRAPPER -->
 
 </body>
 </html>
