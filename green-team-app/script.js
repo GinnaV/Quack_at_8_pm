@@ -57,3 +57,19 @@ function getMostPopularService(feedbackList) {
     const mostPopular = Object.entries(serviceCounts).reduce((max, [service, count]) => count > max.count ? { service, count } : max, { service: '', count: 0 });
     return mostPopular.service || 'No data yet';
 }
+
+const slider = document.getElementById("willingness-to-pay-slider");
+const sliderValue = document.getElementById("slider-value");
+
+// Set default value on page load
+sliderValue.textContent = `$${slider.value}`;
+
+// Handle slider changes
+slider.addEventListener("input", function() {
+    if (slider.value == 100) {
+        sliderValue.textContent = `$100+`;
+    } else {
+        sliderValue.textContent = `$${slider.value}`;
+    }
+});
+
