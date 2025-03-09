@@ -207,10 +207,15 @@ button:hover {
 .composer-option {
     display: flex;
     align-items: center;
-    gap: 5px;
+    color: #555;
     cursor: pointer;
-    padding: 8px;
-}
+    font-size: 14px;
+  }
+  .composer-option img {
+    width: 30px;
+    height: 30px;
+    margin-right: 5px;
+  }
 
 .composer-option:hover span {
     color: #388e3c;
