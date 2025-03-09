@@ -26,16 +26,30 @@ function loadActivities() {
 }
 
 // Save journal entry
-function saveJournal() {
+function saveFeed() {
     let entry = document.getElementById("journalEntry").value;
-    if (entry === "") return;
-
-    let journal = JSON.parse(localStorage.getItem("journal")) || [];
-    journal.push(entry);
-    localStorage.setItem("journal", JSON.stringify(journal));
-
-    loadJournal();
-}
+    if (entry.trim() === "") return; // Ignore empty posts
+  
+    // Retrieve existing feed posts or initialize an empty array
+    let feed = JSON.parse(localStorage.getItem("feed")) || [];
+  
+    // Create a new feed post object with content and a timestamp
+    let newPost = {
+      content: entry,
+      timestamp: new Date().toLocaleString()
+    };
+  
+    // Add the new post to the feed array and store it back in localStorage
+    feed.push(newPost);
+    localStorage.setItem("feed", JSON.stringify(feed));
+  
+    // Clear the input field after saving the post
+    document.getElementById("journalEntry").value = "";
+  
+    // Refresh the feed display with the new post
+    loadFeed();
+  }
+  
 
 // Load and display journal entries
 function loadJournal() {
