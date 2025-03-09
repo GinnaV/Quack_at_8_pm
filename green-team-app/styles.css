@@ -52,3 +52,23 @@ button {
     border: none;
     border-radius: 5px;
 }
+
+/* Style for the Profile button */
+.profile-btn {
+    background-color: red;        /* Red color for the button */
+    color: white;                 /* White text */
+    padding: 10px 20px;           /* Padding for the button */
+    text-decoration: none;        /* Remove underline from the link */
+    border-radius: 5px;           /* Rounded corners for the button */
+    font-size: 16px;              /* Font size */
+    position: absolute;           /* Positioning the button */
+    top: 20px;                    /* Position it 20px from the top */
+    right: 20px;                  /* Position it 20px from the right */
+}
+
+/* Ensure the header doesn't overlap with the button */
+header {
+    position: relative; /* Allow absolute positioning of the Profile button inside the header */
+    padding: 20px;
+}
+
