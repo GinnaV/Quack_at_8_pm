@@ -289,46 +289,6 @@ button:hover {
 .post-footer div:hover {
     color: #388e3c;
 }
-<<<<<<< HEAD
-
-/* SLIDER STYLES (Desktop Version) */
-.slider {
-    width: 100%;
-    overflow: hidden; /* Hides the part of the track that goes off screen */
-    position: relative;
-}
-
-.slide-track {
-    display: flex;
-    animation: scroll 10s linear infinite;
-}
-
-.slide {
-    flex: 0 0 100vw; /* Each slide is full viewport width */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.slide img {
-    width: 100%;
-    height: auto;
-    display: block;
-    object-fit: cover;
-}
-
-@keyframes scroll {
-    0% {
-        transform: translateX(0);
-    }
-    100% {
-        /* Moves left by the width of 4 slides: 4 x 100vw */
-        transform: translateX(-400vw);
-    }
-}
-
-/* Media Query for Smaller Screens */
-=======
 /* Styling for the thank you message */
 #thank-you-message {
     display: none; /* Ensure it starts hidden */
@@ -346,7 +306,6 @@ button:hover {
 
 
 /* Media query for smaller screens */
->>>>>>> 717152db13679f8784bf73bb02e305145302970b
 @media (max-width: 600px) {
     .container {
         width: 95%;
