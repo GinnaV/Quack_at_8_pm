@@ -10,42 +10,88 @@
     <div class="container">
         <h1>Community Feedback Form</h1>
         <form id="feedback-form">
-            <label for="programme-interest">Which programmes are you most interested in?</label>
-            <br>
-            <select id="programme-interest" required>
-                <option value="">Select programmes</option>
-                <option value="greenVolunteers">Green Volunteers</option>
-                <option value="skylarks">Skylarks</option>
-                <option value="Green Explorers">Green Explorers</option>
-                <option value="Thrive">Thrive</option>
-                <option value="Green Shoots">Green Shoots</option>
-                <option value="Green Schools">Green Schools</option>
-                <option value="Nature Play">Nature Play</option>
-                <option value="Holiday Activity">Holiday Activity</option>
-                <option value="Corporates/Groups">Corporates/Groups</option>
+            <!-- Programme Interest (Multiple Choices) -->
+            <label for="programme-interest">Which programmes are you most interested in? (Select all that apply)</label>
+            <div>
+                <input type="checkbox" id="greenVolunteers" name="programme-interest" value="greenVolunteers">
+                <label for="greenVolunteers">Green Volunteers</label>
+            </div>
+            <div>
+                <input type="checkbox" id="skylarks" name="programme-interest" value="skylarks">
+                <label for="skylarks">Skylarks</label>
+            </div>
+            <div>
+                <input type="checkbox" id="greenExplorers" name="programme-interest" value="greenExplorers">
+                <label for="greenExplorers">Green Explorers</label>
+            </div>
+            <div>
+                <input type="checkbox" id="thrive" name="programme-interest" value="thrive">
+                <label for="thrive">Thrive</label>
+            </div>
+            <div>
+                <input type="checkbox" id="greenShoots" name="programme-interest" value="greenShoots">
+                <label for="greenShoots">Green Shoots</label>
+            </div>
+            <div>
+                <input type="checkbox" id="greenSchools" name="programme-interest" value="greenSchools">
+                <label for="greenSchools">Green Schools</label>
+            </div>
+            <div>
+                <input type="checkbox" id="naturePlay" name="programme-interest" value="naturePlay">
+                <label for="naturePlay">Nature Play</label>
+            </div>
+            <div>
+                <input type="checkbox" id="holidayActivity" name="programme-interest" value="holidayActivity">
+                <label for="holidayActivity">Holiday Activity</label>
+            </div>
+            <div>
+                <input type="checkbox" id="corporatesGroups" name="programme-interest" value="corporatesGroups">
+                <label for="corporatesGroups">Corporates/Groups</label>
+            </div>
+            <br><br>
+
+            <!-- Willingness to Pay (Slider) -->
+            <label for="willingness-to-pay-slider">How much would you be willing to pay for this service?</label>
+            <input type="range" id="willingness-to-pay-slider" name="willingness-to-pay" min="0" max="100" value="0" step="1">
+            <span id="slider-value">$0</span>
+            <br><br>
+
+            <!-- Age Range (Dropdown) -->
+            <label for="age-range">Age Range</label>
+            <select id="age-range" name="age-range">
+                <option value="18-24">18-24</option>
+                <option value="25-34">25-34</option>
+                <option value="35-44">35-44</option>
+                <option value="45-54">45-54</option>
+                <option value="55+">55+</option>
             </select>
-            <br>
-            <label for="willingness-to-pay">How much would you be willing to pay for this service?</label>
-            <input type="number" id="willingness-to-pay" required placeholder="Amount in USD">
-            <br>
-            <label for="age">Your Age:</label>
-            <br>
-            <input type="number" id="age" required placeholder="Your age">
-            <br>
+            <br><br>
+
+            <!-- Additional Inputs (Willingness to Pay and Age) -->
+            <label for="willingness-to-pay-2">How much would you be willing to pay for any of these programmes on average?</label>
+            <input type="number" id="willingness-to-pay-2" required placeholder="Amount in GBP">
+            <br><br>
+
+            <label for="age-2">Your Age:</label>
+            <input type="number" id="age-2" required placeholder="Your age">
+            <br><br>
+
             <label for="location">Your Location (Country/City):</label>
             <input type="text" id="location" required placeholder="Where are you located?">
-            <br>
+            <br><br>
+
             <button type="submit">Submit Feedback</button>
         </form>
 
+        <!-- Thank You Message -->
         <div id="thank-you-message" style="display: none;">
             <p>Thank you for your feedback!</p>
         </div>
 
+        <!-- Insights Report (Dynamically Added) -->
         <div id="insight-report">
             <!-- Insights will be dynamically added here -->
         </div>
-
     </div>
 
     <script src="script.js"></script> <!-- Link to your JavaScript file -->
