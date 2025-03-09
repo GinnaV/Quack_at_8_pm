@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Slider Test</title>
+  <style>
+    /* The outer container hides overflow */
+    .slider {
+  width: 800px;         /* Fixed slider width for PC screens */
+  overflow: hidden;     /* Hides overflow */
+  position: relative;
+  margin: 0 auto;       /* Centers the slider on the page */
+}
+
+/* The 'track' is a wide row of slides that animates from right to left */
+.slide-track {
+  display: flex;
+  animation: scroll 10s linear infinite;
+}
+
+/* Each slide is 800px wide (matching .slider width) */
+.slide {
+  flex: 0 0 800px;      /* Prevents shrinking, fixed width of 800px */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Slide images fill their container */
+.slide img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+
+/* Keyframes: move left by the total width of the first set of slides
+   Example: if you have 4 unique slides (each 800px wide), that's 3200px total. */
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    /* Moves left by 3200px (4 slides × 800px) */
+    transform: translateX(-3200px);
+  }
+}
+
+  </style>
+</head>
+<body>
+  <div class="slider">
+    <div class="slide-track">
+      <div class="slide"><img src="Photos\post_1.png" alt="Slide 1"></div>
+      <div class="slide"><img src="Photos\post_2.png" alt="Slide 2"></div>
+      <div class="slide"><img src="Photos\post_3.png" alt="Slide 3"></div>
+      <div class="slide"><img src="Photos\post_3.png" alt="Slide 4"></div>
+
+      <div class="slide"><img src="Photos\post_1.png" alt="Slide 1"></div>
+      <div class="slide"><img src="Photos\post_2.png" alt="Slide 2"></div>
+      <div class="slide"><img src="Photos\post_3.png" alt="Slide 3"></div>
+      <div class="slide"><img src="Photos\post_3.png" alt="Slide 4"></div>
+    </div>
+  </div>
+</body>
+</html>

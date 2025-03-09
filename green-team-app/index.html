@@ -1,32 +1,202 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Green Team App</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <title>Green Team App</title>
+  <link rel="stylesheet" href="styles.css">
+
+  <!-- Inline styles for the new environmental posts (move to styles.css if desired) -->
+  <style>
+    /* Container for the environmental posts */
+    .environmental-container {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      padding: 20px 0;
+      overflow-x: auto; /* Enables horizontal scrolling if needed */
+    }
+
+    /* Each environmental post card */
+    .environmental-post {
+      position: relative;
+      width: 220px;               /* Card width (adjust as needed) */
+      flex: 0 0 auto;             /* Prevents shrinking, so cards line up horizontally */
+      border-radius: 12px;        /* Rounded corners */
+      overflow: hidden;           /* Ensures images or overlay don't spill out */
+      border: 1px solid #ddd;     /* Light border */
+      cursor: pointer;
+      transition: transform 0.3s ease;
+      background-color: #fff;
+    }
+
+    /* Card hover effect */
+    .environmental-post:hover {
+      transform: scale(1.05);
+    }
+
+    /* The image inside the card */
+    .environmental-post img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* Overlay text area */
+    .overlay {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      color: #fff;
+      padding: 10px;
+      /* Simple gradient fade from bottom to top */
+      background: linear-gradient(to top, rgba(0,0,0,0.7), rgba(0,0,0,0));
+    }
+
+    /* Overlay heading */
+    .overlay h3 {
+      margin: 0 0 5px;
+      font-size: 16px;
+    }
+
+    /* Overlay paragraph */
+    .overlay p {
+      margin: 0;
+      font-size: 14px;
+    }
+
+    /* --- Existing slider styles below (shortened for clarity) --- */
+
+    .slider {
+      width: 800px;
+      height: 400px;
+      overflow: hidden;
+      position: relative;
+      margin: 0 auto;
+      border: 1px solid #eee;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      background-color: #fff;
+    }
+    .slide-track {
+      display: flex;
+      animation: scroll 10s linear infinite;
+    }
+    .slide {
+      flex: 0 0 800px;
+      height: 400px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+    }
+    .slide img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+    }
+    @keyframes scroll {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-3200px); }
+    }
+  </style>
 </head>
 <body>
-    <img src=Photos\lgoo.jpg alt="Logo" class="logo"> 
+  <img src="Photos/lgoo.jpg" alt="Logo" class="logo"> 
 
-    <header>
-        <h1>Green Team App</h1>
-    </header>
+  <header>
+    <h1>Green Team App</h1>
+  </header>
 
-    <nav>
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="feedback.html">Feedback</a></li>
-            <li><a href="feed.html">Feed</a></li>
-        </ul>
-    </nav>
+  <nav>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="feedback.html">Feedback</a></li>
+      <li><a href="feed.html">Feed</a></li>
+    </ul>
+  </nav>
 
-    <main>
-        <h2>Welcome to the Green Team App! 🌍</h2>
-        <p>Connect with nature, track activities, and support your mental well-being.</p>
-        <a href="activities.html" class="btn">Start Exploring</a>
-    </main>
+  <main>
+    <h2>Welcome to the Green Team App! 🌍</h2>
+    <p>Connect with nature, track activities, and support your mental well-being.</p>
+    <a href="activities.html" class="btn">Start Exploring</a>
 
-    <script src="script.js"></script>
+    <!-- Subscription Composer (existing) -->
+    <div class="composer" style="max-width: 600px; margin: 20px auto;">
+      <div class="composer-top">
+        <img src="Photos/Profile_Picture.png" alt="Subscribe">
+        <input type="email" placeholder="Enter your email for daily news feed" />
+      </div>
+      <div class="composer-bottom">
+        <div class="composer-option">
+          <img src="Photos/Writing_icon.png" alt="Subscribe icon">
+          <span>Subscribe</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- NEW: Environmental posts in a style similar to the reference picture -->
+    <h2>Latest Environmental Posts</h2>
+    <div class="environmental-container">
+      <!-- Post 1 -->
+      <div class="environmental-post">
+        <img src="Photos/Post_1.png" alt="Green City 1">
+        <div class="overlay">
+          <h3>Urban Tree Initiative</h3>
+          <p>Planting 1,000 trees in downtown areas.</p>
+        </div>
+      </div>
+
+      <!-- Post 2 -->
+      <div class="environmental-post">
+        <img src="Photos/Post_2.png" alt="Green City 2">
+        <div class="overlay">
+          <h3>River Cleanup</h3>
+          <p>Join us in cleaning the local riverbanks.</p>
+        </div>
+      </div>
+
+      <!-- Post 3 -->
+      <div class="environmental-post">
+        <img src="Photos/Post_1.png" alt="Green City 3">
+        <div class="overlay">
+          <h3>Rooftop Gardens</h3>
+          <p>Encouraging sustainable gardens on city rooftops.</p>
+        </div>
+      </div>
+
+      <!-- Post 4 -->
+      <div class="environmental-post">
+        <img src="Photos/post_3.png" alt="Green City 4">
+        <div class="overlay">
+          <h3>Bee-Friendly Spaces</h3>
+          <p>Help pollinators thrive in urban environments.</p>
+        </div>
+      </div>
+    </div>
+    <!-- End of new environmental posts section -->
+
+    <!-- Existing PC-wide infinite slider -->
+    <h2>Infinite Scrolling Slider</h2>
+    <div class="slider">
+      <div class="slide-track">
+        <!-- First set of slides -->
+        <div class="slide"><img src="Photos/post_1.png" alt="Slide 1"></div>
+        <div class="slide"><img src="Photos/post_2.png" alt="Slide 2"></div>
+        <div class="slide"><img src="Photos/post_3.png" alt="Slide 3"></div>
+        <div class="slide"><img src="Photos/post_3.png" alt="Slide 4"></div>
+
+        <!-- Duplicate slides for seamless loop -->
+        <div class="slide"><img src="Photos/post_1.png" alt="Slide 1"></div>
+        <div class="slide"><img src="Photos/post_2.png" alt="Slide 2"></div>
+        <div class="slide"><img src="Photos/post_3.png" alt="Slide 3"></div>
+        <div class="slide"><img src="Photos/post_3.png" alt="Slide 4"></div>
+      </div>
+    </div>
+
+  </main>
+
+  <script src="script.js"></script>
 </body>
 </html>

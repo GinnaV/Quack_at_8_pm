@@ -1,10 +1,11 @@
-/* Set the background color of the body to white */
+/* Global Styles */
 body {
     background-color: white;
     font-family: Cambria; /* You can change to your preferred font */
     margin: 0;
     padding: 0;
 }
+
 .logo {
     position: absolute;
     top: 45px; /* Distance from the top */
@@ -26,14 +27,14 @@ header {
     border-bottom: 1px solid #388e3c;  /* Thin green line under the heading */
 }
 
-/* Style for the navigation menu */
+/* Navigation Menu */
 nav ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
     text-align: right;
-    margin-top: 40px; /* This will move the nav a bit lower */
-    margin-right: 30px; /* This will move the nav a bit lower */
+    margin-top: 40px; /* Move nav a bit lower */
+    margin-right: 30px; 
 }
 
 nav ul li {
@@ -74,6 +75,7 @@ main .btn {
 main .btn:hover {
     background-color: #2c6e2c;
 }
+
 .container {
     background-color: #fff;
     padding: 30px;
@@ -149,19 +151,23 @@ button:hover {
     font-size: 1.1em;
     color: #333;
 }
+
 .slider-container {
     display: flex;
     align-items: center;
-    gap: 10px; /* Adds spacing between the elements */
+    gap: 10px; /* Spacing between elements */
     width: 100%;
     max-width: 1000px; /* Adjust as needed */
     margin: 10px auto; /* Centers the container */
 }
+
 #willingness-to-pay-slider {
-    flex-grow: 1; /* Allows the slider to expand within the container */
-    width: 100%; /* Makes it responsive */
+    flex-grow: 1; /* Allows slider to expand within the container */
+    width: 100%; /* Responsive width */
     max-width: 500px; /* Ensures it doesn’t get too wide */
-}/* FEED CONTAINER */
+}
+
+/* FEED CONTAINER */
 .feed-container {
     width: 100%;
     max-width: 600px;
@@ -204,18 +210,34 @@ button:hover {
     margin-top: 10px;
 }
 
+/* (Note: .composer-buttom appears to be a typo. It’s preserved below as-is.) */
+.composer-buttom {
+    display: inline-block; /* Inline-block style */
+    background-color: #4caf50;
+    color: #fff;
+    padding: 10px 15px;
+    margin-top: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+    font-size: 14px;
+    font-weight: bold;
+    border: none;
+}
+
 .composer-option {
     display: flex;
     align-items: center;
     color: #555;
     cursor: pointer;
     font-size: 14px;
-  }
-  .composer-option img {
+}
+
+.composer-option img {
     width: 30px;
     height: 30px;
     margin-right: 5px;
-  }
+}
 
 .composer-option:hover span {
     color: #388e3c;
@@ -267,69 +289,104 @@ button:hover {
 .post-footer div:hover {
     color: #388e3c;
 }
-/* Media query for smaller screens */
+
+/* SLIDER STYLES (Desktop Version) */
+.slider {
+    width: 100%;
+    overflow: hidden; /* Hides the part of the track that goes off screen */
+    position: relative;
+}
+
+.slide-track {
+    display: flex;
+    animation: scroll 10s linear infinite;
+}
+
+.slide {
+    flex: 0 0 100vw; /* Each slide is full viewport width */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.slide img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+}
+
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        /* Moves left by the width of 4 slides: 4 x 100vw */
+        transform: translateX(-400vw);
+    }
+}
+
+/* Media Query for Smaller Screens */
 @media (max-width: 600px) {
     .container {
         width: 95%;
-        max-width: 450px; /* Further reduce max width */
-        margin: 30px auto; /* Adjust margins */
-        }
-        h1 {
-            font-size: 1.5em;
-        }
-    
-        select, input {
-            font-size: 0.9em;
-            padding: 6px;
-        }
-    
-        button {
-            font-size: 0.9em;
-            padding: 10px;
-        }
-    
-
-    .logo {
-        width: 40px; /* Adjust for smaller screens */
+        max-width: 450px;
+        margin: 30px auto;
     }
-
+    h1 {
+        font-size: 1.5em;
+    }
+    select, input {
+        font-size: 0.9em;
+        padding: 6px;
+    }
+    button {
+        font-size: 0.9em;
+        padding: 10px;
+    }
+    .logo {
+        width: 40px;
+    }
     nav ul {
         flex-direction: column;
         text-align: center;
     }
-
     .slider-container {
         flex-direction: column;
     }
     form {
         flex-direction: column;
-        display:flex;
+        display: flex;
     }
+    /* Adjust slider for phone screens */
+    .slider {
+        width: 100%;
+    }
+    .slide {
+        flex: 0 0 100vw;
+    }
+}
 
-    @media (max-width: 480px) {
-        .container {
-            width: 95%;
-            max-width: 400px;
-            padding: 15px;
-            margin: 20px auto;
-        }
-    
-        h1 {
-            font-size: 1.4em;
-        }
-    
-        label {
-            font-size: 0.9em;
-        }
-    
-        select, input {
-            font-size: 0.85em;
-            padding: 6px;
-        }
-    
-        button {
-            font-size: 0.9em;
-            padding: 8px;
-        }
+/* Additional Media Query for Very Small Screens */
+@media (max-width: 480px) {
+    .container {
+        width: 95%;
+        max-width: 400px;
+        padding: 15px;
+        margin: 20px auto;
+    }
+    h1 {
+        font-size: 1.4em;
+    }
+    label {
+        font-size: 0.9em;
+    }
+    select, input {
+        font-size: 0.85em;
+        padding: 6px;
+    }
+    button {
+        font-size: 0.9em;
+        padding: 8px;
     }
 }
